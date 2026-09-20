@@ -1,0 +1,110 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum ProjectStatus {
+  PENDING
+  OFFERED
+  NEGOTIATING
+  ACCEPTED
+  REJECTED
+  IN_PROGRESS
+  DONE
+}
+
+enum OfferStatus {
+  PENDING
+  NEGOTIATING
+  ACCEPTED
+  REJECTED
+}
+
+enum NegotiationSender {
+  ADMIN
+  USER
+}
+
+model User {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  password     String
+  role         Role     @default(USER)
+  company      String?
+  phone        String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  projects     Project[]
+}
+
+model Project {
+  id          String        @id @default(cuid())
+  userId      String
+  user        User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title       String
+  category    String
+  description String
+  status      ProjectStatus @default(PENDING)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  offers      Offer[]
+}
+
+model Offer {
+  id             String        @id @default(cuid())
+  projectId      String
+  project        Project       @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  round          Int           @default(1)
+  estimasiWaktu  String
+  budget         String
+  scopeOfWork    String
+  status         OfferStatus   @default(PENDING)
+  createdAt      DateTime      @default(now())
+
+  negotiations   Negotiation[]
+}
+
+model Negotiation {
+  id              String            @id @default(cuid())
+  offerId         String
+  offer           Offer             @relation(fields: [offerId], references: [id], onDelete: Cascade)
+  sender          NegotiationSender
+  message         String
+  proposedBudget  String?
+  proposedWaktu   String?
+  createdAt       DateTime          @default(now())
+}
+
+model Programmer {
+  id        String   @id @default(cuid())
+  name      String
+  role      String
+  skills    String
+  photo     String?
+  linkedin  String?
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+}
+
+model PortfolioItem {
+  id          String   @id @default(cuid())
+  title       String
+  category    String
+  description String
+  image       String?
+  link        String?
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+}

@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Inovasi Online IT Consultant
 
-## Getting Started
+Website company profile + platform pengajuan proyek ("joki proyek") untuk Inovasi Online IT Consultant. Dibangun dengan Next.js (App Router), Prisma + SQLite, dan NextAuth.
 
-First, run the development server:
+## Fitur
+
+- Landing page company profile (layanan, portofolio, tim programmer, cara kerja)
+- Registrasi & login klien
+- Login admin terpisah (`/login/admin`)
+- Klien dapat mengajukan proyek baru
+- Admin mengirim penawaran (estimasi waktu, budget, scope of work)
+- Klien dapat menerima, menolak, atau negosiasi penawaran
+- Negosiasi dua arah (klien <-> admin) per penawaran
+- Tombol chat langsung ke WhatsApp
+- Link ke LinkedIn perusahaan
+
+## Menjalankan Proyek
 
 ```bash
+npm install
+npm run db:seed   # membuat akun admin & demo, contoh portofolio & programmer
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Buka [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Akun Demo (setelah seed)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Peran  | Email                     | Password      |
+|--------|---------------------------|---------------|
+| Admin  | admin@inovasionline.id    | admin12345    |
+| Klien  | client@demo.com           | client12345   |
 
-## Learn More
+## Konfigurasi
 
-To learn more about Next.js, take a look at the following resources:
+Edit `.env`:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- `NEXT_PUBLIC_WHATSAPP_NUMBER` — nomor WhatsApp admin (format `62xxxxxxxxxx`)
+- `NEXT_PUBLIC_LINKEDIN_URL` — URL halaman LinkedIn perusahaan
+- `AUTH_SECRET` — secret NextAuth (sudah digenerate, ganti untuk produksi)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Struktur
 
-## Deploy on Vercel
+- `src/app` — halaman (landing page, auth, dashboard klien, dashboard admin)
+- `src/lib/actions` — Server Actions (auth, project/offer/negosiasi)
+- `src/lib/auth.ts` / `auth.config.ts` — konfigurasi NextAuth (dipisah agar middleware tetap Edge-compatible)
+- `prisma/schema.prisma` — skema database
+- `prisma/seed.ts` — data awal (admin, demo klien, portofolio, programmer)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Database
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Menggunakan SQLite lokal (`dev.db`) melalui Prisma driver adapter `better-sqlite3`. Untuk produksi, ganti provider di `prisma/schema.prisma` (mis. PostgreSQL) dan sesuaikan adapter di `src/lib/prisma.ts`.
