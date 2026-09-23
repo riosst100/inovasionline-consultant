@@ -15,6 +15,13 @@ type PortfolioItem = {
   description: string;
   link: string | null;
   order: number;
+  clientLabel: string | null;
+  problem: string | null;
+  solution: string | null;
+  techStack: string | null;
+  ourRole: string | null;
+  challenge: string | null;
+  outcome: string | null;
 };
 
 export default function PortfolioListItem({ item, t }: { item: PortfolioItem; t: Dictionary }) {

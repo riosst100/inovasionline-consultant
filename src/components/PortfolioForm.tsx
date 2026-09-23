@@ -14,6 +14,13 @@ type PortfolioItem = {
   description: string;
   link: string | null;
   order: number;
+  clientLabel: string | null;
+  problem: string | null;
+  solution: string | null;
+  techStack: string | null;
+  ourRole: string | null;
+  challenge: string | null;
+  outcome: string | null;
 };
 
 export default function PortfolioForm({
@@ -99,6 +106,89 @@ export default function PortfolioForm({
             defaultValue={item?.order ?? 0}
             className="form-input"
             placeholder="0"
+          />
+        </div>
+      </div>
+
+      <div className="border-t border-slate-200 pt-4 mt-2">
+        <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-4">Case Study</p>
+
+        <div className="grid sm:grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm font-semibold text-slate-700 mb-2">{t.dashboard.portfolioClientLabel}</label>
+            <input
+              name="clientLabel"
+              type="text"
+              defaultValue={item?.clientLabel ?? ""}
+              className="form-input"
+              placeholder={t.dashboard.portfolioClientPlaceholder}
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-semibold text-slate-700 mb-2">{t.dashboard.portfolioTechStackLabel}</label>
+            <input
+              name="techStack"
+              type="text"
+              defaultValue={item?.techStack ?? ""}
+              className="form-input"
+              placeholder={t.dashboard.portfolioTechStackPlaceholder}
+            />
+          </div>
+        </div>
+
+        <div className="mt-4">
+          <label className="block text-sm font-semibold text-slate-700 mb-2">{t.dashboard.portfolioProblemLabel}</label>
+          <textarea
+            name="problem"
+            rows={2}
+            defaultValue={item?.problem ?? ""}
+            className="form-input"
+            placeholder={t.dashboard.portfolioProblemPlaceholder}
+          />
+        </div>
+
+        <div className="mt-4">
+          <label className="block text-sm font-semibold text-slate-700 mb-2">{t.dashboard.portfolioSolutionLabel}</label>
+          <textarea
+            name="solution"
+            rows={2}
+            defaultValue={item?.solution ?? ""}
+            className="form-input"
+            placeholder={t.dashboard.portfolioSolutionPlaceholder}
+          />
+        </div>
+
+        <div className="grid sm:grid-cols-2 gap-4 mt-4">
+          <div>
+            <label className="block text-sm font-semibold text-slate-700 mb-2">{t.dashboard.portfolioOurRoleLabel}</label>
+            <input
+              name="ourRole"
+              type="text"
+              defaultValue={item?.ourRole ?? ""}
+              className="form-input"
+              placeholder={t.dashboard.portfolioOurRolePlaceholder}
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-semibold text-slate-700 mb-2">{t.dashboard.portfolioChallengeLabel}</label>
+            <input
+              name="challenge"
+              type="text"
+              defaultValue={item?.challenge ?? ""}
+              className="form-input"
+              placeholder={t.dashboard.portfolioChallengePlaceholder}
+            />
+          </div>
+        </div>
+
+        <div className="mt-4">
+          <label className="block text-sm font-semibold text-slate-700 mb-2">{t.dashboard.portfolioOutcomeLabel}</label>
+          <textarea
+            name="outcome"
+            rows={2}
+            defaultValue={item?.outcome ?? ""}
+            className="form-input"
+            placeholder={t.dashboard.portfolioOutcomePlaceholder}
           />
         </div>
       </div>

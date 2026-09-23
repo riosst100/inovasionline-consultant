@@ -9,11 +9,12 @@ import { getDictionary } from "@/lib/i18n/dictionaries";
 
 const serviceIcons = [
   { bg: "bg-blue-50 text-blue-600", icon: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" },
-  { bg: "bg-cyan-50 text-cyan-600", icon: "M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" },
+  { bg: "bg-cyan-50 text-cyan-600", icon: "M16 11V7a4 4 0 00-8 0v4M5 11h14l-1 10H6L5 11z" },
   { bg: "bg-indigo-50 text-indigo-600", icon: "M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-14 5h.01M19 17h.01" },
-  { bg: "bg-emerald-50 text-emerald-600", icon: "M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" },
-  { bg: "bg-amber-50 text-amber-600", icon: "M11 3.055A9.001 9.001 0 1020.945 13H11V3.055z" },
-  { bg: "bg-rose-50 text-rose-600", icon: "M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M12 12m-3 0a3 3 0 106 0 3 3 0 10-6 0" },
+  { bg: "bg-emerald-50 text-emerald-600", icon: "M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" },
+  { bg: "bg-amber-50 text-amber-600", icon: "M13 10V3L4 14h7v7l9-11h-7z" },
+  { bg: "bg-violet-50 text-violet-600", icon: "M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" },
+  { bg: "bg-rose-50 text-rose-600", icon: "M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" },
 ];
 
 export default async function Home() {
@@ -36,17 +37,13 @@ export default async function Home() {
       <Navbar />
 
       {/* ===== HERO ===== */}
-      <section id="home" className="relative overflow-hidden bg-slate-950 pt-36 pb-28 lg:pt-44 lg:pb-36">
+      <section id="home" className="relative overflow-hidden bg-slate-950 pt-28 pb-28 lg:pt-32 lg:pb-36">
         <div className="absolute inset-0 hero-grid opacity-20" />
         <div className="absolute -top-32 -right-32 w-[32rem] h-[32rem] bg-blue-600/30 rounded-full blur-3xl" />
         <div className="absolute top-1/2 -left-40 w-96 h-96 bg-cyan-400/20 rounded-full blur-3xl" />
 
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-center">
-          <div>
-            <span className="inline-flex items-center gap-2 bg-white/5 border border-white/10 text-cyan-300 text-xs font-semibold tracking-wide px-4 py-2 rounded-full mb-6">
-              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-              {t.hero.badge}
-            </span>
+          <div className="-mt-14 lg:-mt-20">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight tracking-tight">
               {t.hero.titleLine1}{" "}
               <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
@@ -71,21 +68,6 @@ export default async function Home() {
               >
                 {t.hero.ctaSecondary}
               </a>
-            </div>
-
-            <div className="mt-14 grid grid-cols-3 gap-6 max-w-md">
-              <div>
-                <p className="text-3xl font-extrabold text-white">120+</p>
-                <p className="text-sm text-slate-400 mt-1">{t.hero.statProjects}</p>
-              </div>
-              <div>
-                <p className="text-3xl font-extrabold text-white">98%</p>
-                <p className="text-sm text-slate-400 mt-1">{t.hero.statSatisfaction}</p>
-              </div>
-              <div>
-                <p className="text-3xl font-extrabold text-white">9+</p>
-                <p className="text-sm text-slate-400 mt-1">{t.hero.statYears}</p>
-              </div>
             </div>
           </div>
 
@@ -144,7 +126,7 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* ===== ABOUT ===== */}
+      {/* ===== ABOUT / TRUST ===== */}
       <section id="about" className="py-24 lg:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-center">
           <div className="relative">
@@ -165,9 +147,8 @@ export default async function Home() {
                 </svg>
               </div>
             </div>
-            <div className="absolute -top-6 -right-6 bg-white shadow-2xl rounded-2xl px-6 py-5 border border-slate-100">
-              <p className="text-3xl font-extrabold text-blue-600">9+</p>
-              <p className="text-xs text-slate-500 font-medium">{t.about.badge}</p>
+            <div className="absolute -top-6 -right-6 bg-white shadow-2xl rounded-2xl px-6 py-5 border border-slate-100 max-w-[220px]">
+              <p className="text-sm font-extrabold text-blue-600 leading-snug">{t.about.badge}</p>
             </div>
           </div>
 
@@ -226,9 +207,9 @@ export default async function Home() {
           <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {t.services.items.map((s, i) => (
               <div key={s.title} className="service-card">
-                <div className={`icon-box ${serviceIcons[i].bg}`}>
+                <div className={`icon-box ${serviceIcons[i % serviceIcons.length].bg}`}>
                   <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                    <path strokeLinecap="round" strokeLinejoin="round" d={serviceIcons[i].icon} />
+                    <path strokeLinecap="round" strokeLinejoin="round" d={serviceIcons[i % serviceIcons.length].icon} />
                   </svg>
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 mt-5">{s.title}</h3>
@@ -239,7 +220,7 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* ===== HOW PENGAJUAN WORKS ===== */}
+      {/* ===== HOW WE WORK ===== */}
       <section className="py-24 lg:py-32 bg-slate-950 relative overflow-hidden">
         <div className="absolute inset-0 hero-grid opacity-10" />
         <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
@@ -249,7 +230,7 @@ export default async function Home() {
             <p className="mt-4 text-slate-400">{t.process.subtitle}</p>
           </div>
 
-          <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-5 gap-6">
             {t.process.steps.map((s, i) => (
               <div key={s.t} className="why-card">
                 <p className="text-4xl font-extrabold bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">
@@ -272,27 +253,177 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* ===== PORTFOLIO ===== */}
+      {/* ===== AI-ASSISTED ENGINEERING ===== */}
+      <section id="ai-engineering" className="py-24 lg:py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-center">
+          <div>
+            <span className="text-blue-600 font-bold text-sm tracking-widest uppercase">{t.aiEngineering.eyebrow}</span>
+            <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-slate-900 leading-tight">{t.aiEngineering.title}</h2>
+            <p className="mt-5 text-slate-600 leading-relaxed">{t.aiEngineering.description}</p>
+            <div className="mt-6 rounded-2xl bg-blue-50 border border-blue-100 px-5 py-4">
+              <p className="text-sm text-blue-900 leading-relaxed">{t.aiEngineering.note}</p>
+            </div>
+          </div>
+
+          <div className="grid gap-5">
+            {t.aiEngineering.points.map((p) => (
+              <div key={p.t} className="flex gap-4 bg-slate-50 border border-slate-100 rounded-2xl p-5">
+                <div className="w-10 h-10 rounded-lg bg-blue-600 flex items-center justify-center shrink-0">
+                  <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="font-semibold text-slate-900">{p.t}</h3>
+                  <p className="text-sm text-slate-500 mt-1">{p.d}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== TECHNOLOGY ===== */}
+      <section className="py-24 lg:py-32 bg-slate-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto">
+            <span className="text-blue-600 font-bold text-sm tracking-widest uppercase">{t.technology.eyebrow}</span>
+            <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-slate-900">{t.technology.title}</h2>
+            <p className="mt-4 text-slate-600">{t.technology.subtitle}</p>
+          </div>
+
+          <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {t.technology.groups.map((g) => (
+              <div key={g.label} className="bg-white rounded-2xl border border-slate-200 p-6">
+                <h3 className="text-sm font-bold text-slate-400 uppercase tracking-wide">{g.label}</h3>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {g.items.map((item) => (
+                    <span
+                      key={item}
+                      className="text-sm font-medium text-slate-700 bg-slate-100 px-3 py-1.5 rounded-full"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== WHY WORK WITH US ===== */}
+      <section className="py-24 lg:py-32 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto">
+            <span className="text-blue-600 font-bold text-sm tracking-widest uppercase">{t.whyUs.eyebrow}</span>
+            <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-slate-900">{t.whyUs.title}</h2>
+          </div>
+
+          <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {t.whyUs.items.map((item) => (
+              <div key={item.t} className="service-card">
+                <div className="icon-box bg-blue-50 text-blue-600">
+                  <svg className="w-7 h-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold text-slate-900 mt-5">{item.t}</h3>
+                <p className="text-sm text-slate-500 mt-2 leading-relaxed">{item.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ===== SELECTED WORK / CASE STUDIES ===== */}
       {portfolioItems.length > 0 && (
-        <section id="portfolio" className="py-24 lg:py-32 bg-white">
+        <section id="portfolio" className="py-24 lg:py-32 bg-slate-50">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto">
               <span className="text-blue-600 font-bold text-sm tracking-widest uppercase">{t.portfolio.eyebrow}</span>
               <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-slate-900">{t.portfolio.title}</h2>
             </div>
 
-            <div className="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="mt-16 grid lg:grid-cols-2 gap-8">
               {portfolioItems.map((item, i) => (
-                <div key={item.id} className="portfolio-card">
-                  <div className={`h-52 bg-gradient-to-br ${gradients[i % gradients.length]} flex items-center justify-center`}>
-                    <svg className="w-14 h-14 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                <div key={item.id} className="bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col">
+                  <div className={`h-40 bg-gradient-to-br ${gradients[i % gradients.length]} flex items-center justify-center`}>
+                    <svg className="w-12 h-12 text-white/80" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h18v18H3V3zm4 4h10M7 11h10M7 15h6" />
                     </svg>
                   </div>
-                  <div className="p-6">
-                    <span className="text-xs font-semibold text-blue-600 uppercase tracking-wide">{item.category}</span>
-                    <h3 className="font-bold text-slate-900 mt-2">{item.title}</h3>
-                    <p className="text-sm text-slate-500 mt-2">{item.description}</p>
+                  <div className="p-6 flex-1 flex flex-col">
+                    <div className="flex items-center justify-between gap-3 flex-wrap">
+                      <span className="text-xs font-semibold text-blue-600 uppercase tracking-wide">{item.category}</span>
+                      {item.clientLabel && (
+                        <span className="text-xs font-medium text-slate-400">{item.clientLabel}</span>
+                      )}
+                    </div>
+                    <h3 className="font-bold text-slate-900 text-lg mt-2">{item.title}</h3>
+                    <p className="text-sm text-slate-500 mt-2 leading-relaxed">{item.description}</p>
+
+                    {(item.problem || item.solution) && (
+                      <div className="mt-4 space-y-3 text-sm">
+                        {item.problem && (
+                          <p className="text-slate-600 leading-relaxed">
+                            <span className="font-semibold text-slate-900">Problem — </span>
+                            {item.problem}
+                          </p>
+                        )}
+                        {item.solution && (
+                          <p className="text-slate-600 leading-relaxed">
+                            <span className="font-semibold text-slate-900">Solution — </span>
+                            {item.solution}
+                          </p>
+                        )}
+                      </div>
+                    )}
+
+                    {item.techStack && (
+                      <div className="mt-4 flex flex-wrap gap-1.5">
+                        {item.techStack.split(",").map((tech) => (
+                          <span key={tech} className="text-xs font-medium text-slate-600 bg-slate-100 px-2.5 py-1 rounded-full">
+                            {tech.trim()}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+
+                    <div className="mt-4 pt-4 border-t border-slate-100 grid sm:grid-cols-2 gap-3 text-xs">
+                      {item.ourRole && (
+                        <div>
+                          <p className="font-semibold text-slate-400 uppercase tracking-wide">{t.portfolio.roleLabel}</p>
+                          <p className="text-slate-600 mt-1">{item.ourRole}</p>
+                        </div>
+                      )}
+                      {item.challenge && (
+                        <div>
+                          <p className="font-semibold text-slate-400 uppercase tracking-wide">{t.portfolio.challengeLabel}</p>
+                          <p className="text-slate-600 mt-1">{item.challenge}</p>
+                        </div>
+                      )}
+                    </div>
+
+                    {item.outcome && (
+                      <p className="mt-4 text-sm text-emerald-700 bg-emerald-50 border border-emerald-100 rounded-lg px-3 py-2">
+                        {item.outcome}
+                      </p>
+                    )}
+
+                    {item.link && (
+                      <a
+                        href={item.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-blue-600 hover:text-blue-700"
+                      >
+                        View Project
+                        <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </a>
+                    )}
                   </div>
                 </div>
               ))}
@@ -303,11 +434,12 @@ export default async function Home() {
 
       {/* ===== TEAM ===== */}
       {programmers.length > 0 && (
-        <section id="team" className="py-24 lg:py-32 bg-slate-50">
+        <section id="team" className="py-24 lg:py-32 bg-white">
           <div className="max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto">
               <span className="text-blue-600 font-bold text-sm tracking-widest uppercase">{t.team.eyebrow}</span>
               <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-slate-900">{t.team.title}</h2>
+              <p className="mt-4 text-slate-600">{t.team.subtitle}</p>
             </div>
 
             <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">

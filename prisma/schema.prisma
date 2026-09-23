@@ -99,12 +99,19 @@ model Programmer {
 }
 
 model PortfolioItem {
-  id          String   @id @default(cuid())
-  title       String
-  category    String
-  description String
-  image       String?
-  link        String?
-  order       Int      @default(0)
-  createdAt   DateTime @default(now())
+  id              String   @id @default(cuid())
+  title           String
+  category        String
+  description     String
+  image           String?
+  link            String?
+  clientLabel     String?
+  problem         String?
+  solution        String?
+  techStack       String?
+  ourRole         String?
+  challenge       String?
+  outcome         String?
+  order           Int      @default(0)
+  createdAt       DateTime @default(now())
 }

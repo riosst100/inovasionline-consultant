@@ -1,6 +1,6 @@
-# Inovasi Online IT Consultant
+# Inovasi Online
 
-Website company profile + platform pengajuan proyek ("joki proyek") untuk Inovasi Online IT Consultant. Dibangun dengan Next.js (App Router), Prisma + SQLite, dan NextAuth.
+Website company profile + platform pengajuan proyek ("joki proyek") untuk Inovasi Online. Dibangun dengan Next.js (App Router), Prisma + SQLite, dan NextAuth.
 
 ## Fitur
 
@@ -50,3 +50,11 @@ Edit `.env`:
 ## Database
 
 Menggunakan SQLite lokal (`dev.db`) melalui Prisma driver adapter `better-sqlite3`. Untuk produksi, ganti provider di `prisma/schema.prisma` (mis. PostgreSQL) dan sesuaikan adapter di `src/lib/prisma.ts`.
+
+## Konten yang Perlu Diisi Sebelum Launch
+
+Landing page ditulis dengan positioning jujur untuk perusahaan baru (lihat `src/lib/i18n/dictionaries.ts`). Beberapa tempat masih berisi placeholder yang wajib diganti dengan data nyata sebelum go-live:
+
+- `about.badge` (dictionaries.ts) — `[TAHUN] Gabungan Pengalaman Engineering` → isi angka tahun pengalaman yang sebenarnya.
+- Tabel `Programmer` (via `/admin/team`) — data seed berisi `[FOUNDER NAME]` sebagai placeholder. Ganti dengan profil pendiri/tim asli.
+- Tabel `PortfolioItem` (via `/admin/portfolio`) — data seed berisi satu case study placeholder dengan field `[PROJECT TITLE]`, `[CLIENT NAME OR: Confidential Client, ...]`, dst. Isi dengan proyek nyata; kosongkan field `outcome` jika belum ada hasil terukur yang bisa dibagikan — jangan mengarang angka.

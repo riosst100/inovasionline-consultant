@@ -3,6 +3,7 @@ import { logout } from "@/lib/actions/auth";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { getLocale } from "@/lib/i18n/get-locale";
 import { getDictionary } from "@/lib/i18n/dictionaries";
+import Logo from "@/components/Logo";
 
 export default async function DashboardNav({
   name,
@@ -19,9 +20,7 @@ export default async function DashboardNav({
     <header className="bg-white border-b border-slate-200 sticky top-0 z-40">
       <div className="max-w-7xl mx-auto px-6 lg:px-8 py-4 flex items-center justify-between">
         <Link href={homeHref} className="flex items-center gap-2">
-          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-600 to-cyan-400 flex items-center justify-center font-extrabold text-white text-lg">
-            I
-          </div>
+          <Logo className="w-9 h-9" />
           <span className="font-extrabold text-lg tracking-tight text-slate-900">
             Inovasi<span className="text-blue-600">Online</span>
             {role === "ADMIN" && (

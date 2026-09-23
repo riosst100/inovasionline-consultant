@@ -1,45 +1,12 @@
 import NextAuth from "next-auth";
 import { NextResponse } from "next/server";
 import { authConfig } from "@/lib/auth.config";
-import { LOCALE_COOKIE } from "@/lib/i18n/get-locale";
+import { LOCALE_COOKIE, defaultLocale } from "@/lib/i18n/get-locale";
 import { COUNTRY_COOKIE } from "@/lib/get-country";
-import type { Locale } from "@/lib/i18n/dictionaries";
 
 const { auth } = NextAuth(authConfig);
 
-const ID_COUNTRY_CODE = "ID";
-const GEO_LOOKUP_TIMEOUT_MS = 1500;
-
-async function detectFromIp(ip: string | null): Promise<{ locale: Locale; countryCode: string }> {
-  if (!ip || ip === "127.0.0.1" || ip === "::1") {
-    return { locale: "id", countryCode: ID_COUNTRY_CODE };
-  }
-
-  try {
-    const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), GEO_LOOKUP_TIMEOUT_MS);
-
-    const res = await fetch(`http://ip-api.com/json/${ip}?fields=countryCode`, {
-      signal: controller.signal,
-    });
-    clearTimeout(timeout);
-
-    if (!res.ok) return { locale: "id", countryCode: ID_COUNTRY_CODE };
-
-    const data = (await res.json()) as { countryCode?: string };
-    const countryCode = data.countryCode || ID_COUNTRY_CODE;
-    const locale: Locale = countryCode === ID_COUNTRY_CODE ? "id" : "en";
-    return { locale, countryCode };
-  } catch {
-    return { locale: "id", countryCode: ID_COUNTRY_CODE };
-  }
-}
-
-function getClientIp(req: Parameters<Parameters<typeof auth>[0]>[0]): string | null {
-  const forwardedFor = req.headers.get("x-forwarded-for");
-  if (forwardedFor) return forwardedFor.split(",")[0]!.trim();
-  return req.headers.get("x-real-ip");
-}
+const DEFAULT_COUNTRY_CODE = "ID";
 
 export default auth(async (req) => {
   const { pathname } = req.nextUrl;
@@ -60,26 +27,19 @@ export default auth(async (req) => {
 
   const response = NextResponse.next();
 
-  const hasLocaleCookie = req.cookies.has(LOCALE_COOKIE);
-  const hasCountryCookie = req.cookies.has(COUNTRY_COOKIE);
-  if (!hasLocaleCookie || !hasCountryCookie) {
-    const ip = getClientIp(req);
-    const { locale, countryCode } = await detectFromIp(ip);
-
-    if (!hasLocaleCookie) {
-      response.cookies.set(LOCALE_COOKIE, locale, {
-        maxAge: 60 * 60 * 24 * 365,
-        path: "/",
-        sameSite: "lax",
-      });
-    }
-    if (!hasCountryCookie) {
-      response.cookies.set(COUNTRY_COOKIE, countryCode, {
-        maxAge: 60 * 60 * 24 * 365,
-        path: "/",
-        sameSite: "lax",
-      });
-    }
+  if (!req.cookies.has(LOCALE_COOKIE)) {
+    response.cookies.set(LOCALE_COOKIE, defaultLocale, {
+      maxAge: 60 * 60 * 24 * 365,
+      path: "/",
+      sameSite: "lax",
+    });
+  }
+  if (!req.cookies.has(COUNTRY_COOKIE)) {
+    response.cookies.set(COUNTRY_COOKIE, DEFAULT_COUNTRY_CODE, {
+      maxAge: 60 * 60 * 24 * 365,
+      path: "/",
+      sameSite: "lax",
+    });
   }
 
   return response;

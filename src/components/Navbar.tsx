@@ -3,6 +3,7 @@ import { auth } from "@/lib/auth";
 import MobileMenu from "@/components/MobileMenu";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
 import NavbarShell from "@/components/NavbarShell";
+import Logo from "@/components/Logo";
 import { getLocale } from "@/lib/i18n/get-locale";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 
@@ -22,9 +23,7 @@ export default async function Navbar() {
   return (
     <NavbarShell>
       <Link href="/" className="flex items-center gap-2.5 shrink-0">
-        <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-600 to-cyan-400 flex items-center justify-center font-extrabold text-white text-lg shrink-0">
-          I
-        </div>
+        <Logo className="w-9 h-9 shrink-0" />
         <span className="font-extrabold text-lg tracking-tight text-white group-data-[scrolled=true]:text-slate-900 transition-colors duration-300">
           Inovasi<span className="text-cyan-300 group-data-[scrolled=true]:text-blue-600 transition-colors duration-300">Online</span>
         </span>

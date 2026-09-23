@@ -15,9 +15,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Inovasi Online IT Consultant | Konsultasi & Joki Proyek IT",
+  title: "Inovasi Online | Custom Software Engineering",
   description:
-    "Inovasi Online IT Consultant - Mitra terpercaya untuk konsultasi IT, joki proyek, pengembangan software, dan transformasi digital bisnis dan startup Anda.",
+    "Inovasi Online builds custom web applications, e-commerce platforms, and business systems for growing companies — combining experienced software engineering with AI-assisted development.",
 };
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {

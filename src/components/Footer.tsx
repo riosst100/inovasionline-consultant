@@ -2,6 +2,7 @@ import Link from "next/link";
 import { getWhatsAppLink } from "@/lib/whatsapp";
 import { getLocale } from "@/lib/i18n/get-locale";
 import { getDictionary } from "@/lib/i18n/dictionaries";
+import Logo from "@/components/Logo";
 
 export default async function Footer() {
   const linkedinUrl = process.env.NEXT_PUBLIC_LINKEDIN_URL || "https://linkedin.com";
@@ -15,9 +16,7 @@ export default async function Footer() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
           <div>
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-blue-600 to-cyan-400 flex items-center justify-center font-extrabold text-white text-lg">
-                I
-              </div>
+              <Logo className="w-9 h-9" />
               <span className="font-extrabold text-lg text-white">
                 Inovasi<span className="text-blue-400">Online</span>
               </span>
@@ -70,7 +69,7 @@ export default async function Footer() {
           </div>
         </div>
         <div className="mt-14 pt-8 border-t border-white/10 text-center text-sm text-slate-500">
-          <p>&copy; {year} Inovasi Online IT Consultant. {t.footer.rights}</p>
+          <p>&copy; {year} Inovasi Online. {t.footer.rights}</p>
         </div>
       </div>
     </footer>

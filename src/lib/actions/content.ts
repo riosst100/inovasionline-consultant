@@ -94,13 +94,33 @@ export async function createPortfolioItem(
   const description = String(formData.get("description") || "").trim();
   const link = String(formData.get("link") || "").trim();
   const order = Number(formData.get("order") || 0);
+  const clientLabel = String(formData.get("clientLabel") || "").trim();
+  const problem = String(formData.get("problem") || "").trim();
+  const solution = String(formData.get("solution") || "").trim();
+  const techStack = String(formData.get("techStack") || "").trim();
+  const ourRole = String(formData.get("ourRole") || "").trim();
+  const challenge = String(formData.get("challenge") || "").trim();
+  const outcome = String(formData.get("outcome") || "").trim();
 
   if (!title || !category || !description) {
     return { error: "Judul, kategori, dan deskripsi wajib diisi." };
   }
 
   await prisma.portfolioItem.create({
-    data: { title, category, description, link: link || undefined, order },
+    data: {
+      title,
+      category,
+      description,
+      link: link || undefined,
+      order,
+      clientLabel: clientLabel || undefined,
+      problem: problem || undefined,
+      solution: solution || undefined,
+      techStack: techStack || undefined,
+      ourRole: ourRole || undefined,
+      challenge: challenge || undefined,
+      outcome: outcome || undefined,
+    },
   });
 
   revalidatePath("/admin/portfolio");
@@ -122,6 +142,13 @@ export async function updatePortfolioItem(
   const description = String(formData.get("description") || "").trim();
   const link = String(formData.get("link") || "").trim();
   const order = Number(formData.get("order") || 0);
+  const clientLabel = String(formData.get("clientLabel") || "").trim();
+  const problem = String(formData.get("problem") || "").trim();
+  const solution = String(formData.get("solution") || "").trim();
+  const techStack = String(formData.get("techStack") || "").trim();
+  const ourRole = String(formData.get("ourRole") || "").trim();
+  const challenge = String(formData.get("challenge") || "").trim();
+  const outcome = String(formData.get("outcome") || "").trim();
 
   if (!id || !title || !category || !description) {
     return { error: "Judul, kategori, dan deskripsi wajib diisi." };
@@ -129,7 +156,20 @@ export async function updatePortfolioItem(
 
   await prisma.portfolioItem.update({
     where: { id },
-    data: { title, category, description, link: link || undefined, order },
+    data: {
+      title,
+      category,
+      description,
+      link: link || undefined,
+      order,
+      clientLabel: clientLabel || null,
+      problem: problem || null,
+      solution: solution || null,
+      techStack: techStack || null,
+      ourRole: ourRole || null,
+      challenge: challenge || null,
+      outcome: outcome || null,
+    },
   });
 
   revalidatePath("/admin/portfolio");

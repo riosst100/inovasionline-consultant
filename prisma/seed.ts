@@ -35,60 +35,37 @@ async function main() {
     },
   });
 
+  // Placeholder — replace with the real founder/team profiles before launch.
   await prisma.programmer.deleteMany();
   await prisma.programmer.createMany({
     data: [
       {
-        name: "Rizky Ramadhan",
-        role: "Full-Stack Engineer",
-        skills: "Next.js, Node.js, PostgreSQL",
-        linkedin: "https://linkedin.com/in/example",
+        name: "[FOUNDER NAME]",
+        role: "Founder / Full-Stack Engineer",
+        skills: "Replace with real specialization, e.g. Next.js, Node.js, PostgreSQL",
+        linkedin: "https://linkedin.com/in/[FOUNDER-LINKEDIN]",
         order: 1,
-      },
-      {
-        name: "Dewi Anggraini",
-        role: "Mobile Developer",
-        skills: "Flutter, Kotlin, Swift",
-        linkedin: "https://linkedin.com/in/example",
-        order: 2,
-      },
-      {
-        name: "Fajar Nugroho",
-        role: "DevOps Engineer",
-        skills: "AWS, Docker, Kubernetes",
-        linkedin: "https://linkedin.com/in/example",
-        order: 3,
-      },
-      {
-        name: "Nadia Putri",
-        role: "UI/UX Designer",
-        skills: "Figma, Design System, Research",
-        linkedin: "https://linkedin.com/in/example",
-        order: 4,
       },
     ],
   });
 
+  // Placeholder case studies — replace with real project details or remove before launch.
+  // Use "Confidential Client" style labels if the client cannot be named.
   await prisma.portfolioItem.deleteMany();
   await prisma.portfolioItem.createMany({
     data: [
       {
-        title: "Platform Retail Omnichannel",
-        category: "E-Commerce",
-        description: "Sistem penjualan terintegrasi untuk 50+ cabang toko ritel.",
+        title: "[PROJECT TITLE]",
+        category: "Custom Web Application",
+        description: "[Short one-line summary of the project]",
+        clientLabel: "[CLIENT NAME OR: Confidential Client, Location]",
+        problem: "[The business problem the client faced before this project]",
+        solution: "[What we built to solve it]",
+        techStack: "[e.g. Next.js, PostgreSQL, REST API]",
+        ourRole: "[e.g. Full-stack development & architecture]",
+        challenge: "[The biggest technical or business challenge]",
+        outcome: "",
         order: 1,
-      },
-      {
-        title: "Migrasi Infrastruktur Perbankan",
-        category: "Cloud Migration",
-        description: "Migrasi sistem legacy ke cloud dengan downtime nol.",
-        order: 2,
-      },
-      {
-        title: "Sistem ERP Manufaktur",
-        category: "Custom Software",
-        description: "Digitalisasi proses produksi dan rantai pasok end-to-end.",
-        order: 3,
       },
     ],
   });
