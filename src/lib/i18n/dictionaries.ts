@@ -54,7 +54,7 @@ export const dictionaries = {
       adminLoginButton: "Masuk sebagai Admin",
     },
     hero: {
-      titleLine1: "Rekayasa Software Custom",
+      titleLine1: "Solusi Software Custom",
       titleHighlight: "untuk Bisnis yang Berkembang",
       titleLine2: "",
       subtitle:
@@ -397,7 +397,7 @@ export const dictionaries = {
       adminLoginButton: "Sign In as Admin",
     },
     hero: {
-      titleLine1: "Custom Software Engineering",
+      titleLine1: "Custom Software Solutions",
       titleHighlight: "for Growing Businesses",
       titleLine2: "",
       subtitle:
