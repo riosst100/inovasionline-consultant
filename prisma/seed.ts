@@ -35,40 +35,11 @@ async function main() {
     },
   });
 
-  // Placeholder — replace with the real founder/team profiles before launch.
+  // Team section is currently removed from the landing page, and the portfolio
+  // section auto-hides when empty. Add real entries via /admin/team and
+  // /admin/portfolio when ready — do not seed placeholder content here.
   await prisma.programmer.deleteMany();
-  await prisma.programmer.createMany({
-    data: [
-      {
-        name: "[FOUNDER NAME]",
-        role: "Founder / Full-Stack Engineer",
-        skills: "Replace with real specialization, e.g. Next.js, Node.js, PostgreSQL",
-        linkedin: "https://linkedin.com/in/[FOUNDER-LINKEDIN]",
-        order: 1,
-      },
-    ],
-  });
-
-  // Placeholder case studies — replace with real project details or remove before launch.
-  // Use "Confidential Client" style labels if the client cannot be named.
   await prisma.portfolioItem.deleteMany();
-  await prisma.portfolioItem.createMany({
-    data: [
-      {
-        title: "[PROJECT TITLE]",
-        category: "Custom Web Application",
-        description: "[Short one-line summary of the project]",
-        clientLabel: "[CLIENT NAME OR: Confidential Client, Location]",
-        problem: "[The business problem the client faced before this project]",
-        solution: "[What we built to solve it]",
-        techStack: "[e.g. Next.js, PostgreSQL, REST API]",
-        ourRole: "[e.g. Full-stack development & architecture]",
-        challenge: "[The biggest technical or business challenge]",
-        outcome: "",
-        order: 1,
-      },
-    ],
-  });
 
   console.log("Seed selesai.");
   console.log("Admin login: admin@inovasionline.id / admin12345");

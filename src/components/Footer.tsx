@@ -4,7 +4,7 @@ import { getLocale } from "@/lib/i18n/get-locale";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 import Logo from "@/components/Logo";
 
-export default async function Footer() {
+export default async function Footer({ showPortfolio = false }: { showPortfolio?: boolean }) {
   const linkedinUrl = process.env.NEXT_PUBLIC_LINKEDIN_URL || "https://linkedin.com";
   const year = new Date().getFullYear();
   const locale = await getLocale();
@@ -28,8 +28,7 @@ export default async function Footer() {
             <ul className="space-y-2 text-sm text-slate-400">
               <li><Link href="/#about" className="hover:text-cyan-400 transition">{t.footer.aboutUs}</Link></li>
               <li><Link href="/#services" className="hover:text-cyan-400 transition">{t.footer.services}</Link></li>
-              <li><Link href="/#portfolio" className="hover:text-cyan-400 transition">{t.footer.portfolio}</Link></li>
-              <li><Link href="/#team" className="hover:text-cyan-400 transition">{t.footer.team}</Link></li>
+              {showPortfolio && <li><Link href="/#portfolio" className="hover:text-cyan-400 transition">{t.footer.portfolio}</Link></li>}
             </ul>
           </div>
           <div>

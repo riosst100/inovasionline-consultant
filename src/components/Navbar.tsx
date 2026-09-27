@@ -7,7 +7,7 @@ import Logo from "@/components/Logo";
 import { getLocale } from "@/lib/i18n/get-locale";
 import { getDictionary } from "@/lib/i18n/dictionaries";
 
-export default async function Navbar() {
+export default async function Navbar({ showPortfolio = false }: { showPortfolio?: boolean }) {
   const [session, locale] = await Promise.all([auth(), getLocale()]);
   const t = getDictionary(locale);
 
@@ -32,8 +32,7 @@ export default async function Navbar() {
       <div className="hidden lg:flex items-center gap-7 text-sm font-medium">
         <Link href="/#about" className={navLinkClass}>{t.nav.about}</Link>
         <Link href="/#services" className={navLinkClass}>{t.nav.services}</Link>
-        <Link href="/#portfolio" className={navLinkClass}>{t.nav.portfolio}</Link>
-        <Link href="/#team" className={navLinkClass}>{t.nav.team}</Link>
+        {showPortfolio && <Link href="/#portfolio" className={navLinkClass}>{t.nav.portfolio}</Link>}
         <Link href="/#contact" className={navLinkClass}>{t.nav.contact}</Link>
       </div>
 
@@ -64,7 +63,7 @@ export default async function Navbar() {
         )}
       </div>
 
-      <MobileMenu dashboardHref={dashboardHref} locale={locale} t={t} />
+      <MobileMenu dashboardHref={dashboardHref} locale={locale} t={t} showPortfolio={showPortfolio} />
     </NavbarShell>
   );
 }

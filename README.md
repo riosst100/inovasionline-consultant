@@ -1,6 +1,6 @@
 # Inovasi Online
 
-Website company profile + platform pengajuan proyek ("joki proyek") untuk Inovasi Online. Dibangun dengan Next.js (App Router), Prisma + SQLite, dan NextAuth.
+Website company profile + platform pengajuan proyek untuk Inovasi Online, studio custom software solutions. Dibangun dengan Next.js (App Router), Prisma + SQLite, dan NextAuth.
 
 ## Fitur
 

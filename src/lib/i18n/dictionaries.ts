@@ -5,6 +5,11 @@ export const defaultLocale: Locale = "en";
 
 export const dictionaries = {
   id: {
+    meta: {
+      title: "Inovasi Online | Solusi Software Custom",
+      description:
+        "Inovasi Online membangun aplikasi web custom, platform e-commerce, dan sistem bisnis untuk perusahaan yang berkembang — menggabungkan engineering berpengalaman dengan pengembangan berbantuan AI.",
+    },
     nav: {
       about: "Tentang",
       services: "Layanan",
@@ -72,7 +77,7 @@ export const dictionaries = {
       title: "Engineer Berpengalaman. Perusahaan Baru. Standar Engineering yang Sama.",
       description:
         "Inovasi Online adalah perusahaan software engineering yang baru dibentuk. Orang-orang di baliknya memiliki pengalaman profesional membangun aplikasi web, platform e-commerce, dan sistem bisnis untuk klien nyata. Kami mendirikan perusahaan ini agar bisnis bisa mendapat akses langsung ke engineer berpengalaman, tanpa lapisan birokrasi agensi besar.",
-      badge: "[TAHUN] Gabungan Pengalaman Engineering",
+      badge: "6+ Tahun Gabungan Pengalaman Engineering",
       point1Title: "Latar Belakang Engineering Nyata",
       point1Desc: "Tim kami sudah punya pengalaman langsung merilis software produksi sebelum mendirikan perusahaan ini.",
       point2Title: "Komunikasi Langsung",
@@ -83,7 +88,7 @@ export const dictionaries = {
     services: {
       eyebrow: "Yang Kami Kerjakan",
       title: "Software yang Dibangun Sesuai Cara Bisnis Anda Berjalan",
-      subtitle: "Fokus kami adalah rekayasa software custom — bukan website template atau paket siap pakai.",
+      subtitle: "Fokus kami adalah solusi software custom — bukan website template atau paket siap pakai.",
       items: [
         { title: "Aplikasi Web Custom", desc: "Aplikasi web yang dibangun sesuai alur kerja Anda — tools internal, portal klien, sistem booking, dan dashboard." },
         { title: "Pengembangan E-Commerce", desc: "Toko online dan marketplace dengan logika checkout, inventaris, dan pembayaran sesuai kebutuhan bisnis Anda." },
@@ -173,7 +178,7 @@ export const dictionaries = {
       whatsappDefaultMessage: "Halo Inovasi Online, saya ingin membicarakan sebuah proyek software.",
     },
     footer: {
-      description: "Rekayasa software custom untuk bisnis yang berkembang — dibangun oleh engineer berpengalaman, didukung proses yang transparan.",
+      description: "Solusi software custom untuk bisnis yang berkembang — dibangun oleh engineer berpengalaman, didukung proses yang transparan.",
       navigation: "Navigasi",
       aboutUs: "Tentang Kami",
       services: "Layanan",
@@ -348,6 +353,11 @@ export const dictionaries = {
     lang: { id: "Indonesia", en: "English" },
   },
   en: {
+    meta: {
+      title: "Inovasi Online | Custom Software Solutions",
+      description:
+        "Inovasi Online builds custom web applications, e-commerce platforms, and business systems for growing companies — combining experienced software engineering with AI-assisted development.",
+    },
     nav: {
       about: "About",
       services: "Services",
@@ -415,7 +425,7 @@ export const dictionaries = {
       title: "Experienced Engineers. New Company. Same Engineering Standards.",
       description:
         "Inovasi Online is a newly formed software engineering company. The people behind it have prior professional experience building web applications, e-commerce platforms, and business systems for real clients. We started this company to give businesses direct access to experienced engineers, without the overhead of a large agency.",
-      badge: "[YEARS] Combined Engineering Experience",
+      badge: "6+ Years Combined Engineering Experience",
       point1Title: "Real Engineering Background",
       point1Desc: "Our team has hands-on experience shipping production software before founding this company.",
       point2Title: "Direct Communication",
@@ -426,7 +436,7 @@ export const dictionaries = {
     services: {
       eyebrow: "What We Build",
       title: "Software Built Around How Your Business Works",
-      subtitle: "We focus on custom software engineering — not template websites or off-the-shelf packages.",
+      subtitle: "We focus on custom software solutions — not template websites or off-the-shelf packages.",
       items: [
         { title: "Custom Web Applications", desc: "Web apps built around your actual workflow — internal tools, client portals, booking systems, and dashboards." },
         { title: "E-Commerce Development", desc: "Online stores and marketplaces with the checkout, inventory, and payment logic your business actually needs." },
@@ -516,7 +526,7 @@ export const dictionaries = {
       whatsappDefaultMessage: "Hi Inovasi Online, I'd like to talk about a software project.",
     },
     footer: {
-      description: "Custom software engineering for growing businesses — built by experienced engineers, backed by a transparent process.",
+      description: "Custom software solutions for growing businesses — built by experienced engineers, backed by a transparent process.",
       navigation: "Navigation",
       aboutUs: "About Us",
       services: "Services",

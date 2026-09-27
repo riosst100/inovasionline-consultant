@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Inter } from "next/font/google";
 import "./globals.css";
 import { getLocale } from "@/lib/i18n/get-locale";
+import { getDictionary } from "@/lib/i18n/dictionaries";
 
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
@@ -14,11 +15,15 @@ const inter = Inter({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Inovasi Online | Custom Software Engineering",
-  description:
-    "Inovasi Online builds custom web applications, e-commerce platforms, and business systems for growing companies — combining experienced software engineering with AI-assisted development.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = getDictionary(locale);
+
+  return {
+    title: t.meta.title,
+    description: t.meta.description,
+  };
+}
 
 export default async function RootLayout({ children }: LayoutProps<"/">) {
   const locale = await getLocale();

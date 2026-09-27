@@ -11,10 +11,12 @@ export default function MobileMenu({
   dashboardHref,
   locale,
   t,
+  showPortfolio = false,
 }: {
   dashboardHref: string | null;
   locale: Locale;
   t: Dictionary;
+  showPortfolio?: boolean;
 }) {
   const [open, setOpen] = useState(false);
 
@@ -41,8 +43,7 @@ export default function MobileMenu({
           <div className="flex flex-col px-6 py-4 gap-4 text-slate-700 font-medium">
             <Link href="/#about" onClick={() => setOpen(false)}>{t.nav.about}</Link>
             <Link href="/#services" onClick={() => setOpen(false)}>{t.nav.services}</Link>
-            <Link href="/#portfolio" onClick={() => setOpen(false)}>{t.nav.portfolio}</Link>
-            <Link href="/#team" onClick={() => setOpen(false)}>{t.nav.team}</Link>
+            {showPortfolio && <Link href="/#portfolio" onClick={() => setOpen(false)}>{t.nav.portfolio}</Link>}
             <Link href="/#contact" onClick={() => setOpen(false)}>{t.nav.contact}</Link>
 
             <LanguageSwitcher locale={locale} />

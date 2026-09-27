@@ -18,9 +18,8 @@ const serviceIcons = [
 ];
 
 export default async function Home() {
-  const [portfolioItems, programmers, locale] = await Promise.all([
+  const [portfolioItems, locale] = await Promise.all([
     prisma.portfolioItem.findMany({ orderBy: { order: "asc" } }),
-    prisma.programmer.findMany({ orderBy: { order: "asc" } }),
     getLocale(),
   ]);
   const t = getDictionary(locale);
@@ -32,9 +31,11 @@ export default async function Home() {
     "from-blue-600 to-indigo-500",
   ];
 
+  const showPortfolio = portfolioItems.length > 0;
+
   return (
     <>
-      <Navbar />
+      <Navbar showPortfolio={showPortfolio} />
 
       {/* ===== HERO ===== */}
       <section id="home" className="relative overflow-hidden bg-slate-950 pt-28 pb-28 lg:pt-32 lg:pb-36">
@@ -433,44 +434,6 @@ export default async function Home() {
       )}
 
       {/* ===== TEAM ===== */}
-      {programmers.length > 0 && (
-        <section id="team" className="py-24 lg:py-32 bg-white">
-          <div className="max-w-7xl mx-auto px-6 lg:px-8">
-            <div className="text-center max-w-2xl mx-auto">
-              <span className="text-blue-600 font-bold text-sm tracking-widest uppercase">{t.team.eyebrow}</span>
-              <h2 className="mt-3 text-3xl sm:text-4xl font-extrabold text-slate-900">{t.team.title}</h2>
-              <p className="mt-4 text-slate-600">{t.team.subtitle}</p>
-            </div>
-
-            <div className="mt-16 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {programmers.map((p) => (
-                <div key={p.id} className="team-card">
-                  <div className="w-20 h-20 rounded-full bg-gradient-to-br from-blue-500 to-cyan-400 mx-auto flex items-center justify-center text-white font-bold text-2xl">
-                    {p.name.split(" ").map((n) => n[0]).slice(0, 2).join("")}
-                  </div>
-                  <h3 className="font-bold text-slate-900 mt-4">{p.name}</h3>
-                  <p className="text-sm text-blue-600 font-medium mt-1">{p.role}</p>
-                  <p className="text-xs text-slate-500 mt-2">{p.skills}</p>
-                  {p.linkedin && (
-                    <a
-                      href={p.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 mt-4 text-xs font-semibold text-blue-600 hover:text-blue-700"
-                    >
-                      <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                      </svg>
-                      {t.team.linkedin}
-                    </a>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
       {/* ===== CTA ===== */}
       <section className="py-20 bg-gradient-to-r from-blue-600 to-cyan-500 relative overflow-hidden">
         <div className="absolute inset-0 hero-grid opacity-10" />
@@ -521,7 +484,7 @@ export default async function Home() {
         </div>
       </section>
 
-      <Footer />
+      <Footer showPortfolio={showPortfolio} />
       <WhatsAppButton />
     </>
   );
