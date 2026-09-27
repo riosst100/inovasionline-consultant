@@ -4,7 +4,7 @@ Website company profile + platform pengajuan proyek untuk Inovasi Online, studio
 
 ## Fitur
 
-- Landing page company profile (layanan, portofolio, tim programmer, cara kerja)
+- Landing page company profile (layanan, portofolio, cara kerja)
 - Registrasi & login klien
 - Login admin terpisah (`/login/admin`)
 - Klien dapat mengajukan proyek baru
@@ -17,12 +17,14 @@ Website company profile + platform pengajuan proyek untuk Inovasi Online, studio
 ## Menjalankan Proyek
 
 ```bash
-npm install
-npm run db:seed   # membuat akun admin & demo, contoh portofolio & programmer
+npm install       # otomatis menjalankan `prisma generate` lewat postinstall
+npm run db:seed   # membuat akun admin & demo
 npm run dev
 ```
 
 Buka [http://localhost:3000](http://localhost:3000).
+
+> Kalau install dijalankan dengan `--ignore-scripts` (umum di beberapa setup CI/hosting), jalankan `npx prisma generate` secara manual sebelum `npm run db:seed` atau `npm run build` — tanpa ini akan muncul error `Cannot find module '../src/generated/prisma/client'` karena folder tersebut memang di-generate saat install, bukan disimpan di git (lihat `.gitignore`).
 
 ## Akun Demo (setelah seed)
 
@@ -45,7 +47,7 @@ Edit `.env`:
 - `src/lib/actions` — Server Actions (auth, project/offer/negosiasi)
 - `src/lib/auth.ts` / `auth.config.ts` — konfigurasi NextAuth (dipisah agar middleware tetap Edge-compatible)
 - `prisma/schema.prisma` — skema database
-- `prisma/seed.ts` — data awal (admin, demo klien, portofolio, programmer)
+- `prisma/seed.ts` — data awal (admin, demo klien)
 
 ## Database
 
@@ -53,8 +55,5 @@ Menggunakan SQLite lokal (`dev.db`) melalui Prisma driver adapter `better-sqlite
 
 ## Konten yang Perlu Diisi Sebelum Launch
 
-Landing page ditulis dengan positioning jujur untuk perusahaan baru (lihat `src/lib/i18n/dictionaries.ts`). Beberapa tempat masih berisi placeholder yang wajib diganti dengan data nyata sebelum go-live:
-
-- `about.badge` (dictionaries.ts) — `[TAHUN] Gabungan Pengalaman Engineering` → isi angka tahun pengalaman yang sebenarnya.
-- Tabel `Programmer` (via `/admin/team`) — data seed berisi `[FOUNDER NAME]` sebagai placeholder. Ganti dengan profil pendiri/tim asli.
-- Tabel `PortfolioItem` (via `/admin/portfolio`) — data seed berisi satu case study placeholder dengan field `[PROJECT TITLE]`, `[CLIENT NAME OR: Confidential Client, ...]`, dst. Isi dengan proyek nyata; kosongkan field `outcome` jika belum ada hasil terukur yang bisa dibagikan — jangan mengarang angka.
+- Section Team saat ini dihapus dari landing page. Tabel `Programmer` dan halaman `/admin/team` masih ada di kode kalau section ini mau diaktifkan lagi nanti — tinggal tambahkan data lewat `/admin/team` dan render ulang section-nya di `src/app/page.tsx`.
+- Section Portfolio otomatis tersembunyi selama tabel `PortfolioItem` kosong. Tambahkan case study nyata lewat `/admin/portfolio` agar section ini muncul kembali di landing page; kosongkan field `outcome` jika belum ada hasil terukur yang bisa dibagikan — jangan mengarang angka.
